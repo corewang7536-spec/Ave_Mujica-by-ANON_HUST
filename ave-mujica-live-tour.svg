@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<style>
+		text{font-family:'Cinzel', 'Times New Roman', serif;letter-spacing:12px;fill:#0b0416;}
+		.title{font-size:120px;font-weight:400;letter-spacing:14px;}
+	</style>
+	<rect width="1920" height="1080" fill="#f8f5f1"/>
+	<text x="960" y="560" text-anchor="middle" class="title">Ave Mujica</text>
+	<text x="960" y="700" text-anchor="middle" class="title">LIVE TOUR</text>
+</svg>
