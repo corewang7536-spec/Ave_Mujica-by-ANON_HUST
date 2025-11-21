@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Oblivionis — Ave Mujica</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+	<style>
+		*{box-sizing:border-box;margin:0;padding:0}
+		html{scroll-behavior:smooth}
+		:root{--dark-gray:#1a1a1a;--metal-silver:#c0c0c0;--blood-red:#8a0303}
+		body{font-family:'Crimson Text',serif;background:var(--dark-gray);color:var(--metal-silver);}
+		.container{width:90%;max-width:1200px;margin:0 auto;padding:0 20px}
+		.cursor-trail{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);opacity:.65;filter:blur(.3px);animation:trailFade .6s ease-out forwards;mix-blend-mode:screen}
+		@keyframes trailFade{from{transform:translate(-50%,-50%) scale(.8);opacity:.65}to{transform:translate(-50%,-50%) scale(2.1);opacity:0}}
+		header{background:rgba(26,11,46,0.7);position:fixed;width:100%;z-index:1000;padding:15px 0;border-bottom:1px solid var(--blood-red)}
+		.hero{height:90vh;background:linear-gradient(rgba(26,11,46,0.8),rgba(45,27,78,0.7)), url('../images/stick/Oblivionis_background.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+		.hero h1{font-family:'Cinzel',serif;font-size:3rem;color:var(--metal-silver)}
+		.content{padding:100px 0}
+		.big-card{background:rgba(119,153,204,0.25);border:1px solid #7799CC;border-radius:12px;padding:24px;display:grid;gap:18px}
+		.member-card{width:100%;min-width:0;background:rgba(26,11,46,0.65);padding:20px;border-radius:8px;margin:0;transition:opacity 0.6s ease,transform 0.6s ease;opacity:1;transform:translateY(0)}
+		.member-card img{float:right;width:200px;margin-left:16px;border-radius:8px}
+		.member-card.card-hidden,
+		.member-card.card-faded{opacity:0;transform:translateY(18px)}
+		.member-card.card-visible{opacity:1;transform:translateY(0)}
+		.side-image{width:100%;height:260px;background-position:center;background-size:cover;border-radius:8px;margin-bottom:12px;background-image:url('../images/Oblivionis.jpg')}
+		footer{padding:40px 0;text-align:center;color:#888}
+		nav{display:flex;justify-content:space-between;align-items:center}
+		.logo{font-family:'Cinzel',serif;color:var(--metal-silver);text-decoration:none;font-weight:700}
+		.nav-links a{color:#c0c0c0;text-decoration:none;font-weight:600;transition:color 0.3s}
+		.nav-links a:hover{color:#8a0303}
+		.nav-links a::after{content:'';display:block;width:0;height:2px;background:#8a0303;transition:width 0.3s}
+		.nav-links a:hover::after{width:100%}
+		.social-links{display:flex;justify-content:center;gap:20px;margin-bottom:20px}
+		.social-links a{color:#c0c0c0;text-decoration:none;font-size:1.5em;transition:color 0.3s}
+		.social-links a:hover{color:#8a0303}
+		.social-links a::after{content:'';display:block;width:0;height:2px;background:#8a0303;transition:width 0.3s}
+		.social-links a:hover::after{width:100%}
+		#bgMusicControl{position:fixed;left:12px;bottom:12px;background:rgba(26,11,46,0.9);color:var(--metal-silver);border:1px solid rgba(192,192,192,0.08);padding:8px 10px;border-radius:6px;z-index:12000;cursor:pointer;font-size:0.95rem}
+	</style>
+</head>
+<body>
+<header>
+	<div class="container">
+		<nav>
+			<a class="logo" href="../index.html">AVE MUJICA</a>
+			<ul class="nav-links" style="display:flex;gap:16px;list-style:none">
+				<li><a href="../index.html#home">首页</a></li>
+				<li><a href="../index.html#about">关于</a></li>
+				<li><a href="../index.html#music">音乐</a></li>
+				<li><a href="../index.html#tour">巡演</a></li>
+				<li><a href="#contact">联系</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<section class="hero" id="hero">
+	<div class="container">
+		<h1 class="gothic-font">Oblivionis</h1>
+		<p style="color:#d6d6e0">丰川祥子 / Oblivionis（オブリビオニス）</p>
+	</div>
+</section>
+
+<main class="content">
+	<div class="container">
+		<div class="big-card">
+			<article class="member-card">
+				<h2>个人简介</h2>
+				<img src="../images/stick/sakikoright_oblivionis.jpg" alt="Oblivionis">
+				<p>Oblivionis 取自 Lacus Oblivionis（忘湖），意指忘却。</p>
+			<p><strong>担当：</strong>键盘手</p>
+			<p><strong>生日：</strong>2月14日　<strong>星座：</strong>水瓶座</p>
+			<p>羽丘女子学园高中1年级，丰川集团的大小姐，言谈举止十分优雅。曾是 CRYCHIC 的键盘手。</p>
+			<p>怀着守护所有成员人生的觉悟组建了 Ave Mujica，为守护 Ave Mujica 的世界观倾注心血。</p>
+			<p><strong>代表色：</strong> <span style="color:#7799CC">#7799CC</span></p>
+			<p><strong>CV：</strong> 高尾奏音</p>
+		</article>
+			<article class="member-card">
+				<h2>主要经历</h2>
+				<p>&emsp;&emsp;丰川祥子出身豪门，自幼与若叶睦等人交好。初中时组建CRYCHIC乐队，积极引导成员。家庭突遭巨变后，她毅然放弃优渥生活，在现实压力下被迫退队，标志着天真时代的终结。</p>
+	    <p>&emsp;&emsp;升入羽丘后，祥子以“忘却一切”为信念，组建新乐队Ave Mujica。乐队虽迅速成功，但成员间理念冲突加剧。身份公开后，若叶睦因压力崩溃，祥子虽努力掌控局面，却因忽视成员状态导致乐队解散。</p>
+	    <p>&emsp;&emsp;乐队解散后，祥子陷入自责。在旧友介入下，她被迫直面过去与对睦造成的伤害。经历挣扎，她最终选择直面所有责任，重新集结Ave Mujica，誓言与成员命运与共。</p>
+	    <p>&emsp;&emsp;最终，祥子带领Ave Mujica以更成熟的姿态重生，宣告不再接受命运摆布，要亲手开创未来。</p>
+		<img src="../images/stick/sakiko down.jpg" alt="sakiko">		
+		</article>
+	        <article class="member-card">
+				<h2>轶事</h2>
+	    <p>&emsp;&emsp;丰川祥子的姓名设定独具匠心：姓氏“丰川”采用特殊读音“Togawa”，其地理渊源存在爱知县河流与东京旧地名两种考据；名字“祥子”的读音“Sakiko”取自“祥”字训读，与常见读音“Shōko”形成鲜明对比。</p>
+	    <p>&emsp;&emsp;角色家庭设定与企划初代角色山吹沙绫存在互文，但祥子仍保有祖父作为最后的经济保障。</p>
+	    <p>&emsp;&emsp;在《It's MyGO!!!!!》中，祥子退队原因成为最大悬念，衍生出“家道中落论”“姐妹论”等众多假说。直至《Ave Mujica》播出才揭示真相为家族遭遇巨额诈骗，而母亲早逝的时间点更早于观众预期。</p>
+	    <p>&emsp;&emsp;制作人访谈中强调她与若叶睦“互为半身”的共生关系，这种羁绊在杭州“祥睦桥”的意外走红中得到现实呼应。</p>
+	    <p>&emsp;&emsp;祥子凭借鲜明角色魅力斩获2023世萌夏季赛冠军，剧中客服情节则催生了“客服S”的亲切昵称。</p>
+	    <p>&emsp;&emsp;其性格从温柔到强硬的剧烈转变，被粉丝喻为可翻面章鱼玩偶，“章鱼小祥”昵称带动周边热销。更玄学的是，剧中她到访的多个取景地在播出后相继拆除，形成“祥子所至，必遭拆除”的都市传说。</p>
+	    <p>&emsp;&emsp;乐队组建能力被戏称为“魅魔”特质，队员选拔标准则被调侃为“大祥严选”。</p>
+	    <p>&emsp;&emsp;面具上的唐菖蒲花纹与“忘却”花语形成主题呼应，其人生轨迹竟与明代嘉靖帝产生跨时空共鸣。</p>
+	    <p>&emsp;&emsp;2025年台北动物园豹猫征名活动中，“祥子”“初华”组合高票入围，印证角色影响力已突破次元壁。</p>
+			<img src="../images/stick/saki_cry.jpg" alt="软糯小祥">
+	    <p>&emsp;&emsp;细节塑造见微知著：对父亲从敬语“父亲大人”到“混蛋老爸”的称呼变化，折射出亲情关系的复杂转变</p>
+	    <p>&emsp;&emsp;全剧累计二十余次哭泣镜头构成情感图谱，其哭泣频次相当于MyGO!!!!!与Ave Mujica其余九名成员的总和，成为角色最显著的行为特征。</p>
+	        </article>
+		</div>
+	</div>
+</main>
+
+<footer id="contact">
+	<div class="container">
+		<div class="social-links">
+			<a href="https://space.bilibili.com/1459104794"><i class="fab fa-bilibili"></i></a>
+			<a href="https://www.youtube.com/@bang_dream_AveMujica"><i class="fab fa-youtube"></i></a>
+			<a href="https://www.instagram.com/bang_dream_official_"><i class="fab fa-instagram"></i></a>
+			<a href="https://x.com/BDP_AveMujica"><i class="fab fa-x"></i></a>
+		</div>
+		<p>© 2025 Anon HUST.</p>
+	</div>
+</footer>
+
+<button id="bgMusicControl" aria-label="背景音乐">背景音乐：播放中</button>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var bigCards=Array.prototype.slice.call(document.querySelectorAll('.big-card'));
+	function alignCardRows(){
+		bigCards.forEach(function(container){
+			var cardsInContainer=Array.prototype.slice.call(container.querySelectorAll('.member-card'));
+			cardsInContainer.forEach(function(card){
+				card.style.removeProperty('grid-column');
+			});
+			if(!cardsInContainer.length){return;}
+			var containerWidth=container.clientWidth;
+			var targetColumns=3;
+			if(containerWidth<600){
+				targetColumns=1;
+			}else if(containerWidth<960){
+				targetColumns=2;
+			}
+			var columnCount=Math.min(targetColumns,cardsInContainer.length);
+			if(columnCount<1){columnCount=1;}
+			container.style.gridTemplateColumns='repeat('+columnCount+', minmax(260px, 1fr))';
+			var tolerance=6;
+			var rows=[];
+			cardsInContainer.forEach(function(card){
+				var top=Math.round(card.offsetTop);
+				var row=rows.find(function(item){return Math.abs(item.top-top)<=tolerance;});
+				if(!row){
+					row={top:top,cards:[]};
+					rows.push(row);
+				}
+				row.cards.push(card);
+			});
+			rows.sort(function(a,b){return a.top-b.top;});
+			rows.forEach(function(row,rowIndex){
+				var rowLength=row.cards.length;
+				if(rows.length===2&&rowIndex===rows.length-1&&rowLength===1){
+					row.cards[0].style.gridColumn='1 / -1';
+					return;
+				}
+				var offset=Math.floor((columnCount-rowLength)/2)+1;
+				if(offset<1){offset=1;}
+				row.cards.forEach(function(card,index){
+					card.style.gridColumn=(offset+index)+' / span 1';
+				});
+			});
+		});
+	}
+	alignCardRows();
+	window.addEventListener('load',alignCardRows);
+	var resizeTimer;
+	window.addEventListener('resize',function(){
+		clearTimeout(resizeTimer);
+		resizeTimer=setTimeout(alignCardRows,120);
+	});
+	var cards=Array.prototype.slice.call(document.querySelectorAll('.member-card'));
+	if(!cards.length){return;}
+	var observer=new IntersectionObserver(function(entries){
+		entries.forEach(function(entry){
+			var card=entry.target;
+			if(entry.intersectionRatio>=0.3){
+				card.dataset.revealed='true';
+				card.classList.add('card-visible');
+				card.classList.remove('card-hidden');
+				card.classList.remove('card-faded');
+			}else if(card.dataset.revealed==='true'){
+				card.classList.remove('card-visible');
+				card.classList.add('card-faded');
+			}
+		});
+	},{threshold:[0,0.3,0.31]});
+	cards.forEach(function(card){
+		card.classList.add('card-hidden');
+		observer.observe(card);
+	});
+});
+</script>
+
+<script src="../background-music.js"></script>
+<script>
+const trailColors=['#7799cc','#bb9955','#779977','#335566','#aa4455'];
+let lastTrailTime=0;
+const trailMinInterval=16;
+window.addEventListener('pointermove',function(e){
+	const now=Date.now();
+	if(now-lastTrailTime<trailMinInterval){return;}
+	lastTrailTime=now;
+	const dot=document.createElement('span');
+	dot.className='cursor-trail';
+	dot.style.width='14px';
+	dot.style.height='14px';
+	dot.style.left=e.clientX+'px';
+	dot.style.top=e.clientY+'px';
+	dot.style.background=trailColors[Math.floor(Math.random()*trailColors.length)];
+	document.body.appendChild(dot);
+	setTimeout(function(){dot.remove();},600);
+},{passive:true});
+
+initBackgroundMusic({
+	buttonSelector:'#bgMusicControl',
+	playlist:[
+		'Ave Mujica - Ave Mujica.mp3',
+		'Ave Mujica - KiLLKiSS.mp3',
+		'Ave Mujica - Crucifix X.mp3',
+		'Ave Mujica - 天球(そら)のMúsica.mp3',
+		'Ave Mujica - Symbol III _ ▽.mp3',
+		'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
+	],
+	basePath:'../musics/',
+	storageKey:'aveMujicaBgMusicState'
+});
+</script>
+
+</body>
+</html>
+
