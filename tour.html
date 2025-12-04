@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ave Mujica | 巡演日程</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --dark-gray: #1a1a1a;
+            --deep-purple: #2d1b4e;
+            --metal-silver: #c0c0c0;
+            --blood-red: #8a0303;
+        }
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--dark-gray);
+            color: var(--metal-silver);
+        }
+        .cursor-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0.65;
+            filter: blur(0.3px);
+            animation: trailFade 0.6s ease-out forwards;
+            mix-blend-mode: screen;
+        }
+        @keyframes trailFade {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0.65; }
+            to { transform: translate(-50%, -50%) scale(2.1); opacity: 0; }
+        }
+        header {
+            background: rgba(26,11,46,0.75);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--blood-red);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Cinzel', serif;
+            color: var(--metal-silver);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .nav-links { display: flex; gap: 16px; list-style: none; }
+        .nav-links a {
+            color: #c0c0c0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--blood-red); }
+        .nav-links a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--blood-red);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .hero {
+            height: 70vh;
+            background:
+                linear-gradient(135deg, rgba(45,27,78,0.78), rgba(26,11,46,0.88)),
+                url('images/Tour_Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.3rem; color: #fff; }
+        .hero p { margin-top: 12px; font-size: 1.2rem; color: #f0e9ff; }
+        .hero-note { margin-top: 16px; color: rgba(255,255,255,0.7); font-size: 0.95rem; letter-spacing: 0.08em; }
+        .content { padding: 110px 0; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .big-card {
+            background: rgba(26,11,46,0.68);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 28px;
+            display: grid;
+            gap: 24px;
+        }
+        .intro { font-size: 1.1rem; line-height: 1.8; color: #dcdcf0; }
+        .tour-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .tour-card {
+            width: 300px;
+            background: rgba(0,0,0,0.32);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+            transition: transform 0.3s ease;
+        }
+        .tour-card.card-hidden,
+        .tour-card.card-faded {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        .tour-card.card-visible { opacity: 1; transform: translateY(0); }
+        .tour-card:hover { transform: translateY(-6px); }
+        .tour-cover { height: 210px; background-position: center; background-size: cover; }
+        .tour-info { padding: 18px; }
+        .tour-info h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .tour-info p { margin-bottom: 6px; color: #cfd0e7; }
+        .tour-cta { text-align: center; margin-top: 10px; }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 24px;
+            background: transparent;
+            color: var(--blood-red);
+            border: 2px solid var(--blood-red);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-button:hover { background: var(--blood-red); color: #fff; }
+        footer { padding: 50px 0 20px; text-align: center; background: var(--dark-gray); }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+        .social-links a { color: #c0c0c0; font-size: 1.5rem; transition: color 0.3s; text-decoration: none; }
+        .social-links a:hover { color: var(--blood-red); }
+        #bgMusicControl {
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            background: rgba(26,11,46,0.9);
+            color: var(--metal-silver);
+            border: 1px solid rgba(192,192,192,0.08);
+            padding: 8px 10px;
+            border-radius: 6px;
+            z-index: 12000;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 768px) {
+            .nav-links { flex-wrap: wrap; justify-content: flex-end; }
+            .hero h1 { font-size: 2.4rem; }
+            .tour-card { width: 100%; max-width: 340px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a class="logo" href="index.html">AVE MUJICA</a>
+        <ul class="nav-links">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="index.html#about">关于</a></li>
+            <li><a href="musics.html">音乐</a></li>
+            <li><a href="tour.html">巡演</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>巡演之日</h1>
+        <p>亲眼见证，人偶的苏醒</p>
+        <p class="hero-note"><a href="images/Tour_Background.jpg" style="color:inherit;text-decoration:underline"></a></p>
+    </div>
+</section>
+
+<main class="content">
+    <div class="container">
+        <div class="big-card">
+            <p class="intro"></p>
+            <div class="tour-grid">
+                <div class="tour-card">
+                    <div class="tour-cover" style="background-image:url('images/live1_Ulterius Procedere.jpg');"></div>
+                    <div class="tour-info">
+                        <h3>Ave Mujica 6th LIVE「Ulterius Procedere」</h3>
+                        <p>2025年12月14日(日) 开场16:30／开演17:30 · 東京国際フォーラム ホールA</p>
+                        <p>2026年1月15日(木) 开场17:30／开演18:30 · グランキューブ大阪 メインホール</p>
+                    </div>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-cover" style="background-image:url('images/live2_ave-mujica-live-tour.jpg');"></div>
+                    <div class="tour-info">
+                        <h3>Ave Mujica LIVE TOUR</h3>
+                        <p>2026年4月17日(金) · Zepp Fukuoka</p>
+                        <p>2026年4月26日(日) · Zepp Namba</p>
+                        <p>2026年5月1日(金) · Zepp Nagoya</p>
+                        <p>2026年5月4日(月) · Zepp Haneda (TOKYO)</p>
+                    </div>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-cover" style="background-image:url('images/live3_moment memory.jpg');"></div>
+                    <div class="tour-info">
+                        <h3>MyGO!!!!!×Ave Mujica TWO-MAN LIVE「"moment / memory"」</h3>
+                        <p>2026年3月1日(日) 开场15:30／开演17:00 · Kアリーナ横浜</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-cta">
+                <a class="cta-button" href="https://bang-dream.com/events" target="_blank" rel="noopener">前往官方购票</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer id="contact">
+    <div class="container">
+        <div class="social-links">
+            <a href="https://space.bilibili.com/1459104794"><i class="fab fa-bilibili"></i></a>
+            <a href="https://www.youtube.com/@bang_dream_AveMujica"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/bang_dream_official_"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/BDP_AveMujica"><i class="fab fa-x"></i></a>
+        </div>
+        <p>© 2025 Anon HUST. 保留所有权利。</p>
+    </div>
+</footer>
+
+<button id="bgMusicControl" aria-label="背景音乐">背景音乐：播放中</button>
+
+<script src="background-music.js"></script>
+<script>
+const trailColors = ['#7799cc', '#bb9955', '#779977', '#335566', '#aa4455'];
+let lastTrailTime = 0;
+const trailMinInterval = 16;
+window.addEventListener('pointermove', function(e) {
+    const now = Date.now();
+    if (now - lastTrailTime < trailMinInterval) return;
+    lastTrailTime = now;
+    const dot = document.createElement('span');
+    dot.className = 'cursor-trail';
+    dot.style.width = '14px';
+    dot.style.height = '14px';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    dot.style.background = trailColors[Math.floor(Math.random() * trailColors.length)];
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 600);
+}, { passive: true });
+
+(function bootstrapBgMusic(){
+    const bgOptions = {
+        buttonSelector: '#bgMusicControl',
+        playlist: [
+            'Ave Mujica - Ave Mujica.mp3',
+            'Ave Mujica - KiLLKiSS.mp3',
+            'Ave Mujica - Crucifix X.mp3',
+            'Ave Mujica - 天球(そら)のMúsica.mp3',
+            'Ave Mujica - Symbol III _ ▽.mp3',
+            'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
+        ],
+        basePath: 'musics/',
+        storageKey: 'aveMujicaBgMusicState',
+        autoplay: true,
+        volume: 0.35
+    };
+    const start = () => initBackgroundMusic(bgOptions);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+        start();
+    }
+})();
+
+(function initTourReveal(){
+    const cards = Array.prototype.slice.call(document.querySelectorAll('.tour-card'));
+    if (!cards.length) return;
+    cards.forEach(card => card.classList.add('card-hidden'));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.intersectionRatio >= 0.3) {
+                el.dataset.revealed = 'true';
+                el.classList.add('card-visible');
+                el.classList.remove('card-hidden');
+                el.classList.remove('card-faded');
+            } else if (el.dataset.revealed === 'true') {
+                el.classList.remove('card-visible');
+                el.classList.add('card-faded');
+            }
+        });
+    }, { threshold: [0, 0.3, 0.31] });
+    cards.forEach(card => observer.observe(card));
+})();
+</script>
+</body>
+</html>

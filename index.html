@@ -676,8 +676,8 @@
                 <ul class="nav-links">
                     <li><a href="#home">首页</a></li>
                     <li><a href="#about">关于</a></li>
-                    <li><a href="#music">音乐</a></li>
-                    <li><a href="#tour">巡演</a></li>
+                    <li><a href="musics.html">音乐</a></li>
+                    <li><a href="tour.html">巡演</a></li>
                     <li><a href="#contact">联系</a></li>
                 </ul>
                 <div class="menu-toggle">
@@ -693,7 +693,7 @@
         <div class="hero-content">
             <h1 class="gothic-font">AVE MUJICA</h1>
             <p>「ようこそ、ave mujicaの世界へ」</p>
-            <a href="#music" class="cta-button">沉入梦境</a>
+            <a href="musics.html" class="cta-button">沉入梦境</a>
         </div>
     </section>
 
@@ -717,7 +717,7 @@
     <!-- 关于部分 -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title gothic-font">关于乐队</h2>
+            <h2 class="section-title gothic-font">人偶们的过去</h2>
             <div class="band-members">
                 <!-- 1) 保留 Oblivionis（含 tooltip） -->
                 <a class="member-card" href="members/oblivionis.html">
@@ -741,7 +741,7 @@
                 <!-- 2) 二号人物（使用 workspace 中的素材文件） -->
                 <a class="member-card" href="members/doloris.html">
                     <!-- 请将你提供的 Doloris 图片保存为 images/Doloris.jpg（或 .webp/.png），下面引用将使用该路径 -->
-                    <div class="member-img" style="background-image: url('images/D1.jpg')"></div>
+                    <div class="member-img" style="background-image: url('images/Doloris.jpg')"></div>
                     <div class="member-info">
                         <h3 class="member-name">Doloris</h3>
                         <p class="member-role">主唱、主音吉他</p>
@@ -821,109 +821,28 @@
         </div>
     </section>
 
-    <!-- 音乐部分 -->
+    <!-- 音乐部分（跳转子站） -->
     <section class="music" id="music">
         <div class="container">
-            <h2 class="section-title gothic-font">音乐作品</h2>
-            <div class="albums">
-                <!-- 占位：为未来六首歌保留位置 -->
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/Ave Mujica.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">Ave Mujica</h3>
-                        <p class="album-year">2023-9-13(MyGO ep.13)</p>
-                        <p>亲亲们别再问了，我们这边没有键盘版的春日影哦。</p>
-                        <button class="play-button" data-music="Ave Mujica - Ave Mujica.mp3">播放</button>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/KiLLKiSS.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">KiLLKiSS</h3>
-                        <p class="album-year">2025-1-8(Mujica OP)</p>
-                        <p>这是一架冲向云霄的银河战舰！</p>
-                        <button class="play-button" data-music="Ave Mujica - KiLLKiSS.mp3">播放</button>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/Crucifix X.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">Crucifix X</h3>
-                        <p class="album-year">2025-3-6(Mujica ep.10)</p>
-                        <p>still alive=steal a life</p>
-                        
-                        <button class="play-button" data-music="Ave Mujica - Crucifix X.mp3">播放</button>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/T1.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">天球(そら)のMúsica</h3>
-                        <p class="album-year">2025-4-3(Mujica ep.13)</p>
-                        <p>那满天的星光,一定是神明大人送给爱看星星的小女孩的礼物吧。</p>
-                        <button class="play-button" data-music="Ave Mujica - 天球(そら)のMúsica.mp3">播放</button>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/Symbol III  ▽.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">Symbol III  ▽</h3>
-                        <p class="album-year">2024-6-15(ELEMENTS)</p>
-                        <p>听一千遍Symbol III : ▽就能回到一月二日的那个晚上吗。</p>
-                        <button class="play-button" data-music="Ave Mujica - Symbol III _ ▽.mp3">播放</button>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <div class="album-cover" style="background-image: url('images/in your blue eyes.jpg')"></div>
-                    <div class="album-info">
-                        <h3 class="album-title">in your blue eyes</h3>
-                        <p class="album-year">2025-9-4(Collaboration with Arknights)</p>
-                        <p>这就是领养手续吗？我同意了。</p>
-                        <button class="play-button" data-music="Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3">播放</button>
-                    </div>
-                </div>
+            <h2 class="section-title gothic-font">人偶之歌</h2>
+            <p style="max-width:720px;margin:0 auto 30px;text-align:center;font-size:1.1rem;">
+                点击按钮，沉入人偶之梦。
+            </p>
+            <div style="text-align:center;">
+                <a href="musics.html" class="cta-button">进入颂乐馆</a>
             </div>
         </div>
     </section>
 
-    <!-- 巡演部分 -->
+    <!-- 巡演部分（跳转子站） -->
     <section class="tour" id="tour">
         <div class="container">
-            <h2 class="section-title gothic-font">巡演日期</h2>
-            <div class="tour-dates">
-                <div class="member-card">
-                    <div class="member-img" data-bg="live1_Ulterius Procedere.jpg" style="background-color:#2b1638;"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ave Mujica 6th LIVE「Ulterius Procedere」</h3>
-                        <p class="member-role">2025年12月14日(日) 开场16:30／开演17:30</p>
-                        <p class="member-role">東京国際フォーラム ホールA</p>
-                        <p class="member-role">2026年1月15日(木) 开场17:30／开演18:30</p>
-                        <p class="member-role">グランキューブ大阪 メインホール</p>
-                    </div>
-                </div>
-
-                <div class="member-card">
-                    <div class="member-img" data-bg="live2_ave-mujica-live-tour.jpg" style="background-color:#2b1638;"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ave Mujica LIVE TOUR</h3>
-                        <p class="member-role">2026年4月17日(金)  Zepp Fukuoka</p>
-                        <p class="member-role">2026年4月26日(日)  Zepp Namba</p>
-                        <p class="member-role">2026年5月1日(金)  Zepp Nagoya</p>
-                        <p class="member-role">2026年5月4日(月)  Zepp Haneda (TOKYO)</p>
-                    </div>
-                </div>
-
-                <div class="member-card">
-                    <div class="member-img" data-bg="live3_moment memory.jpg" style="background-color:#2b1638;"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">MyGO!!!!!×Ave Mujica TWO-MAN LIVE「"moment / memory"」</h3>
-                        <p class="member-role">2026年3月1日(日) 开场15:30／开演17:00</p>
-                        <p class="member-role">Kアリーナ横浜</p>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title gothic-font">巡演之日</h2>
+            <p style="max-width:720px;margin:0 auto 30px;text-align:center;font-size:1.1rem;">
+                人偶在现实中获得短暂生命，登上人间的舞台。
+            </p>
             <div class="tour-cta">
-                <a href="https://bang-dream.com/events" class="buy-ticket" target="_blank" rel="noopener">购票</a>
+                <a href="tour.html" class="buy-ticket" style="display:inline-block;">查看巡演日程</a>
             </div>
         </div>
     </section>
@@ -971,14 +890,6 @@
                         document.querySelector('.nav-links').classList.remove('active');
                     }
                 }
-            });
-        });
-
-        // 播放按钮交互
-        document.querySelectorAll('.play-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const albumTitle = this.parentElement.querySelector('.album-title').textContent;
-                alert(`正在播放 ${albumTitle} 专辑中的歌曲`);
             });
         });
 
@@ -1206,82 +1117,30 @@
         }, { passive: true });
 
         // 背景音乐：跨页面保留播放状态
-        initBackgroundMusic({
-            buttonSelector: '#bgMusicControl',
-            playlist: [
-                'Ave Mujica - Ave Mujica.mp3',
-                'Ave Mujica - KiLLKiSS.mp3',
-                'Ave Mujica - Crucifix X.mp3',
-                'Ave Mujica - 天球(そら)のMúsica.mp3',
-                'Ave Mujica - Symbol III _ ▽.mp3',
-                'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
-            ],
-            basePath: 'musics/',
-            storageKey: 'aveMujicaBgMusicState'
-        });
-
-        // 音乐播放控制：把每个 .play-button 绑定到 musics/ 目录中的文件
-        (function bindPlayButtons() {
-            const audio = new Audio();
-            audio.preload = 'none';
-            let currentButton = null;
-
-            function setButtonPlaying(btn, playing) {
-                if (!btn) return;
-                btn.textContent = playing ? '暂停' : '播放';
-                btn.classList.toggle('playing', playing);
+        (function bootstrapBgMusic(){
+            const bgOptions = {
+                buttonSelector: '#bgMusicControl',
+                playlist: [
+                    'Ave Mujica - Ave Mujica.mp3',
+                    'Ave Mujica - KiLLKiSS.mp3',
+                    'Ave Mujica - Crucifix X.mp3',
+                    'Ave Mujica - 天球(そら)のMúsica.mp3',
+                    'Ave Mujica - Symbol III _ ▽.mp3',
+                    'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
+                ],
+                basePath: 'musics/',
+                storageKey: 'aveMujicaBgMusicState',
+                autoplay: true,
+                volume: 0.35
+            };
+            const start = () => initBackgroundMusic(bgOptions);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', start, { once: true });
+            } else {
+                start();
             }
-
-            document.querySelectorAll('.play-button').forEach(btn => {
-                const fname = btn.getAttribute('data-music');
-                if (!fname) return;
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    // 如果当前按钮是同一首歌：切换播放/暂停
-                    if (currentButton === btn) {
-                        if (audio.paused) {
-                            audio.play();
-                            setButtonPlaying(btn, true);
-                        } else {
-                            audio.pause();
-                            setButtonPlaying(btn, false);
-                        }
-                        return;
-                    }
-
-                    // 切换到新曲目：停止旧的，设置新 src 并播放
-                    if (currentButton) setButtonPlaying(currentButton, false);
-                    currentButton = btn;
-                    const src = 'musics/' + encodeURIComponent(fname).replace(/%20/g, ' ');
-                    // 为兼容含中文/特殊字符的文件名，使用 encodeURIcomponent but keep spaces as spaces
-                    // 暂停背景音乐（若存在）
-                    if (window.__bgMusicControl && window.__bgMusicControl.pause) try { window.__bgMusicControl.pause(); } catch (e) {}
-                    audio.src = src;
-                    audio.currentTime = 0;
-                    audio.play().then(() => setButtonPlaying(btn, true)).catch(err => {
-                        console.error('播放失败', err);
-                        // 若播放被阻止，允许背景恢复
-                        if (window.__bgMusicControl && window.__bgMusicControl.resume) try { window.__bgMusicControl.resume(); } catch(e){}
-                    });
-                });
-            });
-
-            // 当音频结束时，重置按钮状态
-            audio.addEventListener('ended', () => {
-                setButtonPlaying(currentButton, false);
-                currentButton = null;
-                if (window.__bgMusicControl && window.__bgMusicControl.resume) try { window.__bgMusicControl.resume(); } catch(e){}
-            });
-
-            audio.addEventListener('pause', () => {
-                // 当手动暂停时，更新按钮文本
-                setButtonPlaying(currentButton, false);
-                // 暂停时让背景音乐恢复（如果存在）
-                if (window.__bgMusicControl && window.__bgMusicControl.resume) try { window.__bgMusicControl.resume(); } catch(e){}
-            });
         })();
+
     </script>
 </body>
-
 </html>
-

@@ -12,6 +12,14 @@
 		try{return JSON.parse(json);}catch(e){return null;}
 	}
 
+	function normalizeVolume(value){
+		var num=parseFloat(value);
+		if(isNaN(num)){return 0.35;}
+		if(num<0){return 0;}
+		if(num>1){return 1;}
+		return num;
+	}
+
 	window.initBackgroundMusic=function(options){
 		options=options||{};
 		var playlist=Array.isArray(options.playlist)?options.playlist.slice():[];
@@ -23,6 +31,40 @@
 
 		var audio=new Audio();
 		audio.preload='auto';
+		audio.volume=normalizeVolume(options.volume);
+
+		var gestureEvents=['pointerdown','touchstart','keydown'];
+		var pendingGestureHandler=null;
+		function waitForUserGesture(){
+			if(pendingGestureHandler){return;}
+			pendingGestureHandler=function(){
+				gestureEvents.forEach(function(evt){window.removeEventListener(evt,pendingGestureHandler,true);});
+				pendingGestureHandler=null;
+				if(!enabled){return;}
+				audio.play().then(function(){
+					updateButton();
+					saveState();
+				}).catch(function(err){
+					console.warn('背景音乐播放失败',err);
+					updateButton();
+					waitForUserGesture();
+				});
+			};
+			gestureEvents.forEach(function(evt){window.addEventListener(evt,pendingGestureHandler,true);});
+		}
+
+		function playAudioWithFallback(reason){
+			var playPromise=audio.play();
+			if(!playPromise||typeof playPromise.catch!=='function'){return;}
+			playPromise.then(function(){
+				updateButton();
+				saveState();
+			}).catch(function(err){
+				console.warn(reason||'背景音乐播放失败',err);
+				updateButton();
+				waitForUserGesture();
+			});
+		}
 		var enabled=true;
 		var index=0;
 		var pendingSeek=null;
@@ -106,10 +148,7 @@
 			loadCurrent();
 			saveState();
 			if(enabled){
-				audio.play().catch(function(err){
-					console.warn('背景音乐播放失败',err);
-					updateButton();
-				});
+				playAudioWithFallback();
 			}else{
 				updateButton();
 			}
@@ -126,9 +165,7 @@
 				if(!enabled){
 					enabled=true;
 					loadCurrent();
-					audio.play().catch(function(err){
-						console.warn('背景音乐播放失败',err);
-					});
+					playAudioWithFallback();
 				}else{
 					enabled=false;
 					audio.pause();
@@ -141,10 +178,7 @@
 		loadCurrent();
 		var shouldPlay=enabled&&(!storedState||storedState.playing!==false)&&autoplay;
 		if(shouldPlay){
-			audio.play().catch(function(err){
-				console.warn('背景音乐播放失败',err);
-				updateButton();
-			});
+			playAudioWithFallback();
 		}else{
 			audio.pause();
 		}
@@ -160,12 +194,7 @@
 			},
 			resume:function(){
 				if(!enabled){return;}
-				audio.play().then(function(){
-					updateButton();
-					saveState();
-				}).catch(function(err){
-					console.warn('背景音乐恢复失败',err);
-				});
+				playAudioWithFallback('背景音乐恢复失败');
 			},
 			isPlaying:function(){
 				return !audio.paused&&enabled;
@@ -180,12 +209,7 @@
 				if(enabled){return;}
 				enabled=true;
 				loadCurrent();
-				audio.play().catch(function(err){
-					console.warn('背景音乐播放失败',err);
-				}).finally(function(){
-					updateButton();
-					saveState();
-				});
+				playAudioWithFallback();
 			}
 		};
 

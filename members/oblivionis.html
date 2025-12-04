@@ -48,8 +48,8 @@
 			<ul class="nav-links" style="display:flex;gap:16px;list-style:none">
 				<li><a href="../index.html#home">首页</a></li>
 				<li><a href="../index.html#about">关于</a></li>
-				<li><a href="../index.html#music">音乐</a></li>
-				<li><a href="../index.html#tour">巡演</a></li>
+				<li><a href="../musics.html">音乐</a></li>
+				<li><a href="../tour.html">巡演</a></li>
 				<li><a href="#contact">联系</a></li>
 			</ul>
 		</nav>
@@ -214,19 +214,29 @@ window.addEventListener('pointermove',function(e){
 	setTimeout(function(){dot.remove();},600);
 },{passive:true});
 
-initBackgroundMusic({
-	buttonSelector:'#bgMusicControl',
-	playlist:[
-		'Ave Mujica - Ave Mujica.mp3',
-		'Ave Mujica - KiLLKiSS.mp3',
-		'Ave Mujica - Crucifix X.mp3',
-		'Ave Mujica - 天球(そら)のMúsica.mp3',
-		'Ave Mujica - Symbol III _ ▽.mp3',
-		'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
-	],
-	basePath:'../musics/',
-	storageKey:'aveMujicaBgMusicState'
-});
+(function bootstrapBgMusic(){
+	const bgOptions={
+		buttonSelector:'#bgMusicControl',
+		playlist:[
+			'Ave Mujica - Ave Mujica.mp3',
+			'Ave Mujica - KiLLKiSS.mp3',
+			'Ave Mujica - Crucifix X.mp3',
+			'Ave Mujica - 天球(そら)のMúsica.mp3',
+			'Ave Mujica - Symbol III _ ▽.mp3',
+			'Ave Mujica & 塞壬唱片-MSR - in your blue eyes.mp3'
+		],
+		basePath:'../musics/',
+		storageKey:'aveMujicaBgMusicState',
+		autoplay:true,
+		volume:0.35
+	};
+	const start=function(){initBackgroundMusic(bgOptions);};
+	if(document.readyState==='loading'){
+		document.addEventListener('DOMContentLoaded',start,{once:true});
+	}else{
+		start();
+	}
+})();
 </script>
 
 </body>
